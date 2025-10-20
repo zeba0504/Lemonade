@@ -89,8 +89,42 @@ fun LemonadeApp() {
                         }
                     )
                 }
+                2 -> {
+                    LemonTextAndImage(
+                        textLabelResourceId = R.string.lemon_content_description,
+                        drawableResourceId = R.drawable.lemon_squeeze,
+                        contentDescriptionResourceId = R.string.lemon_squeeze,
+                        onImageClick = {
+                            squeezeCount--
+                            if (squeezeCount == 0) {
+                                currentStep = 3
+                            }
+                        }
+                    )
+                }
 
-        }}
+                3 -> {
+                    LemonTextAndImage(
+                        textLabelResourceId = R.string.lemonade_content_description,
+                        drawableResourceId = R.drawable.lemon_drink,
+                        contentDescriptionResourceId = R.string.lemon_drink,
+                        onImageClick = {
+                            currentStep = 4
+                        }
+                    )
+                }
+                4 -> {
+                    LemonTextAndImage(
+                        textLabelResourceId = R.string.empty_glass_content_description,
+                        drawableResourceId = R.drawable.lemon_restart,
+                        contentDescriptionResourceId = R.string.lemon_empty_glass,
+                        onImageClick = {
+                            currentStep = 1
+                        }
+                    )
+                }
+            }
+        }
     }
 }
 
@@ -137,7 +171,10 @@ fun LemonTextAndImage(
 }
 
 
-
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+)
 @Composable
 fun LemonPreview() {
     LemonadeApp()
